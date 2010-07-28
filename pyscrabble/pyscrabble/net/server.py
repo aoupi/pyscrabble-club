@@ -1245,6 +1245,7 @@ class ScrabbleServerFactory(protocol.ServerFactory, object):
         self.db.sync()
 
 
+
     # Player send move to game
     def gameSendMove(self, gameId, onboard, moves, client):
         '''

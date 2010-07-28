@@ -69,6 +69,7 @@ class GameFrame(gtk.Frame):
 
         main.pack_start(top, False, False, 20)
         main.pack_start(self.initUserLetters(), False, False, 0)
+        
 
         self.set_border_width( 10 )
         self.add( main )
@@ -121,6 +122,19 @@ class GameFrame(gtk.Frame):
         self.notebook.show_all()
 
         return self.notebook
+
+    def getLookupWindow(self):
+        '''
+        Word lookup window
+        @return: gtk.Table
+        '''
+        #table=gtk.Table(1,6,True)
+        self.lookupEntry=gtk.Entry()
+        self.lookupEntry.connect("key-press-event", self.wordLookup)
+        self.lookupEntry.set_editable(True)
+        self.lookupEntry.set_flags ( gtk.CAN_FOCUS )
+       # table.add(self.lookupEntry)
+        return self.lookupEntry
 
     def getStatWindow(self):
         '''
@@ -387,6 +401,7 @@ class GameFrame(gtk.Frame):
             vbox.pack_start(self.actionBox, False, False, 0)
 
         vbox.pack_start(self.getLogWindow(), False, False, 7)
+        vbox.pack_start(self.getLookupWindow(),False,False,1)
 
         exp = gtk.Expander()
         exp.add(vbox)
@@ -437,6 +452,21 @@ class GameFrame(gtk.Frame):
                 return True
 
         return False
+
+    def wordLookup(self, widget,event, data=None):
+        if not (event.keyval == gtk.keysyms.Return):
+            return False
+        if not (self.lookupEntry.get_text() != None and len(self.lookupEntry.get_text()) >0):
+            return False
+        self.lookupEntry.set_editable(False)  # Prevent shitload of lookups at once
+        valid = self.mainwindow.validWord(self.lookupEntry.get_text(),self)
+        if valid:
+            self.lookupEntry.set_text('Ok!')
+        else:
+            self.lookupEntry.set_text('Not in dict :(')
+        self.lookupEntry.select_region(0,len(self.lookupEntry.get_text()))
+        self.lookupEntry.set_editable(True)
+        return True
 
     # Trade letters in for new letters
     def tradeLetters(self, button):

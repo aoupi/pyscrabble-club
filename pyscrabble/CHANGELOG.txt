@@ -1,3 +1,7 @@
+1.6.3-club0
+===
+- Word lookup field
+
 1.6.2-club1
 ===
 - About window closes when pressing cancel. (#1746688)

@@ -7,11 +7,13 @@ from pyscrabble.gtkconstants import *
 from pyscrabble.gui.options import OptionWindow
 from pyscrabble import manager
 from pyscrabble import gtkutil
+from pyscrabble import lookup
 from pyscrabble import util
 import os
 import gtk
 import ConfigParser
 import pynotify
+import codecs
 
 
 class MainWindow(gtk.Window):
@@ -62,6 +64,11 @@ class MainWindow(gtk.Window):
         # Read options
         self.optionmanager = manager.OptionManager()
 
+        # Dictionaries
+        self.dicts = {}
+        self.read_dicts(resources)
+
+
         self.soundmanager = manager.SoundManager()
 
         self.optionWindowShown = False
@@ -71,9 +78,37 @@ class MainWindow(gtk.Window):
         vbox.pack_start(self.menubar, False, False, 0)
         vbox.pack_start(notebook, True, True, 0)
 
+
+
         self.add( vbox )
         self.maximize()
         self.show_all()
+
+    def read_dicts(self, resources):
+        dir = resources["resources"][DICT_DIR].path
+        for lang in os.listdir( dir ):
+            if not lang.islower(): continue # Avoids CVS directories
+            self.dicts[lang] = set()
+            for file in os.listdir( os.path.join(dir, lang) ):
+                if not file.islower(): continue # Avoids CVS directories
+                path = os.path.join(dir, lang, file)
+
+                f = codecs.open(path, encoding='utf-8', mode='rb')
+                lines = f.read().split()
+                f.close()
+
+                l = []
+                for line in lines:
+                    l.append( line.upper() )
+                x = set( l )
+
+                self.dicts[lang] = self.dicts[lang].union(x)
+     
+    def validWord(self, word, game):
+        # Validate word in dictionary and not on the board alread
+        if word.upper() not in self.dicts[ game.gameOptions[lookup.OPTION_RULES] ]:
+            return False
+        return True
 
     def onDelete_event(self, widget, event=None, data=None):
         '''
