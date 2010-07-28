@@ -73,7 +73,12 @@ def showAbout(menu):
     dialog.set_translator_credits(_('translator-credits'))
     gtk.about_dialog_set_url_hook(util.showUrl, data=constants.ONLINE_SITE)
     dialog.set_version(constants.VERSION)
+    dialog.connect("response",closeAbout)
     dialog.show()
+
+def closeAbout(win,response):
+    if res == gtk.RESPONSE_CANCEL:
+        w.hide()
 
 def getSelectedItem(view, col):
     '''
