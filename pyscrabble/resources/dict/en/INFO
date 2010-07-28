@@ -1,0 +1,8 @@
+Wordlist taken from Scrabble3D
+
+[Header]
+Version=100004
+Author=Johann Linhart
+StandardCategory=Tournament Word List (TWL06)
+Licence=GNU General Public License, any commercial use is prohibited.
+Comment=This dictionary is based on the CSW (SOWPODS) lists which were delivered with Zyzzyva 2.0.5 and 2.1.0 (http://zyzzyva.net)
