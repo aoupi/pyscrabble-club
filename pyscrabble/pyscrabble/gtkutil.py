@@ -78,7 +78,7 @@ def showAbout(menu):
 
 def closeAbout(win,response):
     if response == gtk.RESPONSE_CANCEL:
-        w.hide()
+        win.hide()
 
 def getSelectedItem(view, col):
     '''
