@@ -32,7 +32,8 @@ except ImportError:
 
 CONFIG_DIR = get_app_data_dir()
 if not os.path.exists(CONFIG_DIR):
-    CONFIG_DIR = os.path.join(RESOURCE_PREFIX, 'config')
+    if not os.makedirs(CONFIG_DIR):
+        CONFIG_DIR = os.path.join(RESOURCE_PREFIX, 'config')
 
 def getLocaleDirs(dir, domain):
     l = []
