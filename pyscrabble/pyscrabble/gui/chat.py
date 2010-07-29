@@ -398,7 +398,7 @@ class ChatFrame(gtk.Frame):
         self.tips.set_tip(noRepeatOption, _('Select this option if you wish to disallow repeating words'))
 
         a = gtk.Adjustment(value=3, lower=1, upper=100, step_incr=1, page_incr=1, page_size=1)
-        moveTimeControl = gtk.SpinButton(a, climb_rate=1, digits=0)
+        moveTimeControl = gtk.SpinButton(a, climb_rate=.1, digits=1)
         moveTimeBox.pack_start(moveTimeOption, False, False, 0)
         moveTimeBox.pack_start(moveTimeControl, False, False, 5)
         moveTimeOption.connect("toggled", lambda w, a: a.set_sensitive(w.get_active()), moveTimeControl)
@@ -509,7 +509,8 @@ class ChatFrame(gtk.Frame):
         if limitOption.get_active():
             options[lookup.OPTION_TIMED_LIMIT] = long(limitControl.get_value_as_int())
         if moveTimeOption.get_active():
-            options[lookup.OPTION_MOVE_TIME] = long(moveTimeControl.get_value_as_int())
+            #options[lookup.OPTION_MOVE_TIME] = long(moveTimeControl.get_value_as_int())
+            options[lookup.OPTION_MOVE_TIME] = moveTimeControl.get_value()
 
         self.gamedialog.destroy()
         self.client.createGame( gameId, options )

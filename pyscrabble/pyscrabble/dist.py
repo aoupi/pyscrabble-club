@@ -68,7 +68,7 @@ def getResourceDirs(dir, ensureLower=True, basePath = None, outdir=None):
             result.append( (d, f) )
     return result
 
-def getDataFiles():
+def getDataFiles(noConfig=False):
     return getLocaleDirs('resources/locale',APP_NAME) + \
            [('resources/images', glob.glob('resources/images/*.*')), \
             ('resources/sounds', glob.glob('resources/sounds/*.*')), \

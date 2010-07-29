@@ -970,7 +970,7 @@ class ScrabbleServerFactory(protocol.ServerFactory, object):
         if game.options.has_key(OPTION_TIMED_GAME):
             time = int(game.options[OPTION_TIMED_GAME])
         elif game.options.has_key(OPTION_MOVE_TIME):
-            time = int(game.options[OPTION_MOVE_TIME])
+            time = game.options[OPTION_MOVE_TIME]
 
         if time is not None:
             p.setInitialTime( time )
@@ -1032,7 +1032,7 @@ class ScrabbleServerFactory(protocol.ServerFactory, object):
         if game.options.has_key(OPTION_TIMED_GAME):
             time = int(game.options[OPTION_TIMED_GAME])
         elif game.options.has_key(OPTION_MOVE_TIME):
-            time = int(game.options[OPTION_MOVE_TIME])
+            time = game.options[OPTION_MOVE_TIME]
 
         for player in game.getPlayers():
             c = self.getPlayerClient(player)
@@ -1072,7 +1072,7 @@ class ScrabbleServerFactory(protocol.ServerFactory, object):
         time = player.time
         if game.options.has_key(OPTION_MOVE_TIME):
             if not wasUnpaused:
-                time = datetime.timedelta(seconds=60 * int(game.options[OPTION_MOVE_TIME]))
+                time = datetime.timedelta(seconds=int(60 * game.options[OPTION_MOVE_TIME]))
 
         if game.options.has_key(OPTION_MOVE_TIME):
             game.timer = reactor.callLater(time.seconds, self.moveTimeExpired, gameId, client)
@@ -1130,7 +1130,7 @@ class ScrabbleServerFactory(protocol.ServerFactory, object):
         '''
         game = self.gameList[ gameId ]
         player = game.getPlayer( self.clients[client] )
-        player.time = datetime.timedelta(seconds=60 * int(game.options[OPTION_MOVE_TIME]))
+        player.time = datetime.timedelta(seconds=int(60 * game.options[OPTION_MOVE_TIME]))
 
         self.sendGameScores(gameId)
         self.sendGameInfoMessage(gameId, [player.getUsername(),MOVE_OUT_OF_TIME], client=None, level=constants.GAME_LEVEL)

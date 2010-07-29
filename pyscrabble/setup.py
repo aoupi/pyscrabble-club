@@ -31,6 +31,10 @@ kwargs = {
     'data_files': dist.getDataFiles(),
     'packages': ['pyscrabble', 'pyscrabble.command', 'pyscrabble.game', 'pyscrabble.gui', 'pyscrabble.net']
 }
+# dkpg-buildpackage is shit at fakeroot since os.path can still get
+# current users homedir. This avoids putting /home/<your_username>/
+# in the deb
+kwargs['data_files']=filter(lambda x: x[0] != 'config', kwargs['data_files'])
 
 if HAS_PY2EXE and 'py2exe' in sys.argv:
     #eggpacks = pkg_resources.require("nevow")
