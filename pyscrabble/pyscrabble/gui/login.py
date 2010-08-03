@@ -1,6 +1,7 @@
 from twisted.internet import reactor
 import pygtk
 import gtk
+import os
 from pyscrabble.net.client import ScrabbleClient
 from pyscrabble.gui.main import MainWindow
 from pyscrabble.gtkconstants import *
@@ -52,7 +53,7 @@ class LoginWindow(gtk.Window):
             self.history.append(server)
         history_file.close()
 
-        pyscrabble_image = os.path.join(resources["resources"][IMAGE_DIR].path,IMAGE_XPM)
+        pyscrabble_image = os.path.join(r["resources"][IMAGE_DIR].path,IMAGE_XPM)
         self.set_icon_from_file(pyscrabble_image)
         
         self.restoreCredentials()
