@@ -397,7 +397,7 @@ class ChatFrame(gtk.Frame):
         self.tips.set_tip(finalLetterOption, _('Select this option if you wish for player who put the final tile to get points from the remaining players letters'))
         self.tips.set_tip(noRepeatOption, _('Select this option if you wish to disallow repeating words'))
 
-        a = gtk.Adjustment(value=3, lower=1, upper=100, step_incr=1, page_incr=1, page_size=1)
+        a = gtk.Adjustment(value=3, lower=0, upper=100, step_incr=1, page_incr=1, page_size=1)
         moveTimeControl = gtk.SpinButton(a, climb_rate=.1, digits=1)
         moveTimeBox.pack_start(moveTimeOption, False, False, 0)
         moveTimeBox.pack_start(moveTimeControl, False, False, 5)

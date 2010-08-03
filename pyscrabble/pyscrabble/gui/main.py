@@ -49,6 +49,8 @@ class MainWindow(gtk.Window):
         pyscrabble_image = os.path.join(resources["resources"][IMAGE_DIR].path,IMAGE_XPM)
         pynotify.init('pyscrabble')
         self.notifier=pynotify.Notification('pyscrabble','starting...','file://%s' % pyscrabble_image)
+
+        self.set_icon_from_file(pyscrabble_image)
         # Reference to client socket
         self.client = client
         self.client.setMainWindow( self )
