@@ -51,6 +51,9 @@ class LoginWindow(gtk.Window):
             self.hostname.append_text(server)
             self.history.append(server)
         history_file.close()
+
+        pyscrabble_image = os.path.join(resources["resources"][IMAGE_DIR].path,IMAGE_XPM)
+        self.set_icon_from_file(pyscrabble_image)
         
         self.restoreCredentials()
         
