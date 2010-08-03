@@ -1,0 +1,14 @@
+Modified version of pyscrabble
+
+
+
+#packaging:
+
+tar czf pyscrabble.tar.gz pyscrabble
+mkdir ../debscrabble
+mv pyscrabble.tar.gz ../debscrabble
+cd ../debscrabble
+py2dsc pyscrabble.tar.gz
+cd deb_dist/pyscrabble-*
+dpkg-buildpackage -rfakeroot -uc -us
+
