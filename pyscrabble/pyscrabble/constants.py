@@ -1,5 +1,5 @@
 REQUIRED_VERSION           = '1.6.1'
-VERSION                    = '1.6.2.5'
+VERSION                    = '1.6.2.6'
 
 ### Misc
 MAX_NAME_LENGTH        = 20

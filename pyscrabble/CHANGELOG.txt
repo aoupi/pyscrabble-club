@@ -1,4 +1,9 @@
-1.6.3-club0
+1.6.2.5-club0
+===
+- Less than one minute move time possible
+- gtk window icon
+
+1.6.2.3-club0
 ===
 - Word lookup field
 
