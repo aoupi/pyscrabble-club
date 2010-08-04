@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Name=PyScrabble
+GenericName=Online scrabble client
+Type=Application
+Comment=Play scrabble with others over the internet
+Exec=pyscrabble-client
+TryExec=pyscrabble-client
+Icon=/usr/share/pyscrabble/images/pyscrabble.xpm
+Categories=Game;BoardGame;
+Name[en_US]=PyScrabble
