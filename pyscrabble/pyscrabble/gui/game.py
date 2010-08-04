@@ -445,7 +445,7 @@ class GameFrame(gtk.Frame):
         '''
 
 
-        if (event.keyval == gtk.keysyms.Return):
+        if (event.keyval in [gtk.keysyms.Return,gtk.keysyms.KP_Enter]):
             if (self.gameEntry.get_text() != None and len(self.gameEntry.get_text()) > 0):
                 self.client.postGameChatMessage( self.currentGameId, self.gameEntry.get_text() )
                 self.gameEntry.set_text( '' )
@@ -454,7 +454,7 @@ class GameFrame(gtk.Frame):
         return False
 
     def wordLookup(self, widget,event, data=None):
-        if not (event.keyval == gtk.keysyms.Return):
+        if not (event.keyval in [gtk.keysyms.Return,gtk.keysyms.KP_Enter]):
             return False
         if not (self.lookupEntry.get_text() != None and len(self.lookupEntry.get_text()) >0):
             return False
