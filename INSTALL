@@ -1,0 +1,110 @@
+TABLE OF CONTENTS
+=================
+
+1    "Generic Notes"
+1.1. INSTALLATION
+1.2. DEPENDENCIES
+2    "Operating System Specific Notes"
+2.1. DEBIAN/UBUNTU
+2.2. SLACKWARE
+2.3. FREEBSD
+2.4. WINDOWS
+
+
+1.1. INSTALLATION
+=================
+
+UNIX
+----
+
+One can either run pyscrabble from the unarchived directory or can be
+installed with running setup.py.
+
+Feel free to use the pyscrabble.desktop file to make launching Pyscrabble
+from a desktop enviroment easy.
+
+
+Other
+-----
+
+To be added: gotta find some obscure/nonfree software.
+
+
+1.2 DEPENDENCIES
+================
+
+Server
+------
+
+* Twisted: http://twistedmatrix.com/projects/core/
+* Nevow: http://nevow.com/
+* Zope Object Database (ZODB): http://www.zope.org/Products/ZODB3.6
+* Zope Interfaces: http://www.zope.org/Products/ZopeInterface
+* Twisted.Web: http://twistedmatrix.com/projects/web/
+
+
+Client
+------
+
+* Twisted: http://twistedmatrix.com/projects/core/
+* Pymedia: http://pymedia.org or Pygame: http://www.pygame.org
+* PyGTK: http://pygtk.org
+
+
+
+2.1. DEBIAN/UBUNTU
+==================
+
+Dependencies
+------------
+
+* python-pygame
+* python-zodb
+* python-notify
+* python-twisted
+
+
+Packaging instructions
+----------------------
+
+# Be sure to install build-essential!!
+tar czf pyscrabble.tar.gz pyscrabble
+mkdir ../debscrabble
+mv pyscrabble.tar.gz ../debscrabble
+cd ../debscrabble
+py2dsc pyscrabble.tar.gz
+cd deb_dist/pyscrabble-*
+dpkg-buildpackage -rfakeroot -uc -us
+
+
+2.2. FREEBSD
+============
+
+Dependencies
+------------
+
+**Note: only the first two dependencies are needed on PC-BSD.
+* devel/py-game (Hosted package is named: py26-game)
+* devel/py-twisted (Hosted package is named: py26-twisted)
+* x11-toolkits/py-gnome2
+* devel/py-notify (Hosted package is named py26-notify)
+
+
+2.3. SLACKWARE
+==============
+
+Dependencies
+------------
+
+Get the following from slackbuilds.org:
+* libraries/pygame
+* network/python-twisted
+* development/zope.interface
+
+
+2.4. WINDOWS
+============
+
+... To be added, please contribute!
+
+

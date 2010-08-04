@@ -1,14 +1,19 @@
-Modified version of pyscrabble
+What is Pyscrabble-Club?
+========================
 
+Pyscrabble-club is a fork of Pyscrabble ( http://pyscrabble.sourceforge.net/
+) with enhancements and bug fixes. Pyscrabble-Club's homepage is at
+http://github.com/aoupi/pyscrabble-club .
 
+What's different???
+===================
 
-#packaging:
-
-tar czf pyscrabble.tar.gz pyscrabble
-mkdir ../debscrabble
-mv pyscrabble.tar.gz ../debscrabble
-cd ../debscrabble
-py2dsc pyscrabble.tar.gz
-cd deb_dist/pyscrabble-*
-dpkg-buildpackage -rfakeroot -uc -us
-
+* Customizable final rule redistribution
+* All tile colors customizable
+* libnotify
+* Swedish rule support
+* Different english worldist (taken from Scrabble3D)
+* Club ubuntu server listing (The last one in the public server list!)
+* Client side word lookup
+* Higher accuracy in move time (1.5 = 1min 30s for instance)
+* GTK Window icon
