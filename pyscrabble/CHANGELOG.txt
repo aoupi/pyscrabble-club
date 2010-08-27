@@ -1,3 +1,7 @@
+1.6.2.7-club0
+===
+- Long word bonus
+
 1.6.2.5-club0
 ===
 - Less than one minute move time possible
