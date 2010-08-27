@@ -363,7 +363,7 @@ class ChatFrame(gtk.Frame):
         finalLetterOption = gtk.CheckButton(_("Final letter redistribution"))
         finalLetterOption.set_active(True)
         longWordBonus = gtk.CheckButton(_("Long word bonus"))
-        longWordBonus.set_active(True)
+        longWordBonus.set_active(False)
         noRepeatOption = gtk.CheckButton(_("Disallow words already on board"))
         noRepeatOption.set_active(False)
 
