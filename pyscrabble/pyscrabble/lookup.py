@@ -95,6 +95,8 @@ LOST_TO                         = 91
 PLAYING_IN                      = 92
 OPTION_FINAL_LETTER             = 93
 OPTION_NO_REPEATS               = 94
+OPTION_LONG_WORD_BONUS          = 95
+MADE_A_LONG_WORD                = 96
 
 SERVER_MESSAGE_LOOKUP = {
     PLAYING_IN                   : _('playing in'),
@@ -187,7 +189,9 @@ SERVER_MESSAGE_LOOKUP = {
     CANNOT_JOIN_STARTED          : _('Cannot join game that has started'),
     GAME_FULL                    : _('Game is full'),
     OPTION_FINAL_LETTER          : _('Final letter rule'),
-    OPTION_NO_REPEATS            : _('Disallow words already on board')
+    OPTION_NO_REPEATS            : _('Disallow words already on board'),
+    OPTION_LONG_WORD_BONUS       : _('Extra points for using many tiles'),
+    MADE_A_LONG_WORD               : _('made a long word!')
 }
 
 class ServerMessage(object):

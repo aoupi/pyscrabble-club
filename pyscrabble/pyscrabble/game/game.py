@@ -37,7 +37,7 @@ class ScrabbleGame:
         self.pending = []
         self.stats = {}
         # Allow older versions to create games too by setting theese keys
-        self.options = {OPTION_NO_REPEATS: False, OPTION_FINAL_LETTER: True}
+        self.options = {OPTION_NO_REPEATS: False, OPTION_FINAL_LETTER: True, OPTION_LONG_WORD_BONUS: False}
         self.options.update(options)
         self.bag = Bag( rules=options[OPTION_RULES] )
         self.creator = None

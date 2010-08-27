@@ -1306,6 +1306,16 @@ class ScrabbleServerFactory(protocol.ServerFactory, object):
             player.addScore( constants.BINGO_BONUS_SCORE )
             self.sendGameInfoMessage(gameId, [player.getUsername(), MADE_A_BINGO, '(%s)' % str(constants.BINGO_BONUS_SCORE)], client=None, level=constants.GAME_LEVEL)
 
+        if game.options[OPTION_LONG_WORD_BONUS]:
+            if onboard.length() == 6:
+                player.addScore(constants.LONG_WORD_SIX)
+                self.sendGameInfoMessage(gameId, [player.getUsername(), MADE_A_LONG_WORD, '(%s)' % str(constants.LONG_WORD_SIX)], client=None, level=constants.GAME_LEVEL)
+
+            if onboard.length() == 5:
+                player.addScore(constants.LONG_WORD_FIVE)
+                self.sendGameInfoMessage(gameId, [player.getUsername(), MADE_A_LONG_WORD, '(%s)' % str(constants.LONG_WORD_FIVE)], client=None, level=constants.GAME_LEVEL)
+
+
         for p in game.getPlayers():
             c = self.getPlayerClient(p)
             c.sendMoves( gameId, moves )

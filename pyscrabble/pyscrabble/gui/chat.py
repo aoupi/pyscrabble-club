@@ -362,6 +362,8 @@ class ChatFrame(gtk.Frame):
         showCountOption.set_active(True)
         finalLetterOption = gtk.CheckButton(_("Final letter redistribution"))
         finalLetterOption.set_active(True)
+        longWordBonus = gtk.CheckButton(_("Long word bonus"))
+        longWordBonus.set_active(True)
         noRepeatOption = gtk.CheckButton(_("Disallow words already on board"))
         noRepeatOption.set_active(False)
 
@@ -395,6 +397,7 @@ class ChatFrame(gtk.Frame):
         self.tips.set_tip(moveTimeOption, _('Select this option if you wish to limit the time a player has for each move'))
         self.tips.set_tip(showCountOption, _('Select this option if you wish to show a count of the letters remaining in the bag during the game'))
         self.tips.set_tip(finalLetterOption, _('Select this option if you wish for player who put the final tile to get points from the remaining players letters'))
+        self.tips.set_tip(longWordBonus, _('Select this option if you wish to reward long words with more points'))
         self.tips.set_tip(noRepeatOption, _('Select this option if you wish to disallow repeating words'))
 
         a = gtk.Adjustment(value=3, lower=0, upper=100, step_incr=1, page_incr=1, page_size=1)
@@ -418,6 +421,7 @@ class ChatFrame(gtk.Frame):
         main.pack_start( rankedOption, False, False, 3 )
         main.pack_start( showCountOption, False, False, 3 )
         main.pack_start( finalLetterOption, False, False, 3)
+        main.pack_start( longWordBonus, False, False, 3)
         main.pack_start( noRepeatOption, False, False, 3)
 
         box = gtk.HBox(False, 3)
@@ -462,14 +466,14 @@ class ChatFrame(gtk.Frame):
         self.gamedialog.action_area.pack_start(okbutton)
         self.gamedialog.action_area.pack_start(cancelbutton)
 
-        okbutton.connect("clicked", self.createGame, centerOption, rankedOption, showCountOption, finalLetterOption, noRepeatOption, combo, timedOption, timeControl, limitOption, limitControl, moveTimeOption, moveTimeControl)
+        okbutton.connect("clicked", self.createGame, centerOption, rankedOption, showCountOption, finalLetterOption, longWordBonus, noRepeatOption, combo, timedOption, timeControl, limitOption, limitControl, moveTimeOption, moveTimeControl)
         cancelbutton.connect("clicked", lambda b: self.gamedialog.destroy() )
 
         self.gamedialog.show_all()
         self.gamedialog.run()
 
     # Create a game
-    def createGame(self, button, centerOption, rankedOption, showCountOption, finalLetterOption, noRepeatOption, combo, timedOption, timeControl, limitOption, limitControl, moveTimeOption, moveTimeControl):
+    def createGame(self, button, centerOption, rankedOption, showCountOption, finalLetterOption, longWordBonus, noRepeatOption, combo, timedOption, timeControl, limitOption, limitControl, moveTimeOption, moveTimeControl):
         '''
         Create a game
 
@@ -478,6 +482,7 @@ class ChatFrame(gtk.Frame):
         @param rankedOption: Option widget
         @param showCountOption: Option widget
         @param finalLetterOption: Option widget
+        @param longWordBonus: Option widget
         @param noRepeatOption: Option widget
         @param combo: Rules widget
         @param timedOption: Time option
@@ -501,6 +506,7 @@ class ChatFrame(gtk.Frame):
         options[lookup.OPTION_CENTER_TILE] = centerOption.get_active()
         options[lookup.OPTION_SHOW_COUNT] = showCountOption.get_active()
         options[lookup.OPTION_FINAL_LETTER] = finalLetterOption.get_active()
+        options[lookup.OPTION_LONG_WORD_BONUS] = longWordBonus.get_active()
         options[lookup.OPTION_NO_REPEATS] = noRepeatOption.get_active()
         options[lookup.OPTION_RANKED] = rankedOption.get_active()
         options[lookup.OPTION_RULES] = opt

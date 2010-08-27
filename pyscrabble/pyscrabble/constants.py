@@ -182,10 +182,12 @@ PRIVATE_MESSAGE_HEADER     = "private_message"
 PRIVATE_MESSAGE_SEND       = "private_message_send"
 
 ### Game Constants
-MAX_PLAYERS      = 6
+MAX_PLAYERS      = 10
 OVERTIME_PENALTY = 10
 # Bonuses
 BINGO_BONUS_SCORE = 50
+LONG_WORD_SIX     = 10
+LONG_WORD_FIVE    = 5
 
 # Colors
 SERVER_MESSAGE        = "#990000"
